@@ -6,8 +6,8 @@ import Correlation
 import MarketData
 import OutputToJson
 
-SUL_AI_ROBOT_KEY = os.getenv("BOT_KEY")
-PUBLIC_CHANNEL_CHAT_ID = os.getenv("CHAT_ID")
+SUL_AI_ROBOT_KEY = "6927010137:AAFOw_Z3WYTzcf_kumFD4a4f8f0mSwIj3lo"
+PUBLIC_CHANNEL_CHAT_ID = "-1001998826152"
 
 bot = telebot.TeleBot(SUL_AI_ROBOT_KEY)
 
