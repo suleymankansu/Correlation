@@ -109,4 +109,4 @@ def get_signal(message):
 
 if __name__ == "__main__":
     # save_correlations()
-    bot.polling(non_stop=True)
+    bot.polling(non_stop=True, interval=5)
