@@ -12,15 +12,15 @@ PUBLIC_CHANNEL_CHAT_ID = "-1001998826152"
 bot = telebot.TeleBot(SUL_AI_ROBOT_KEY)
 
 def save_correlations():
-    MarketData.save_data()
+    #MarketData.save_data()
 
-    close_correlation_matrix = Correlation.calculate_correlation('close.xlsx')
+    close_correlation_matrix = Correlation.calculate_correlation('high.xlsx')
     high_correlation_matrix = Correlation.calculate_correlation('high.xlsx')
     low_correlation_matrix = Correlation.calculate_correlation('low.xlsx')
 
     txtFileName = "daily_corr.txt"
     jsonFileName = "daily_corr.json"
-    Correlation.write_correlation(txtFileName, close_correlation_matrix, 0.94)
+    Correlation.write_correlation(txtFileName, close_correlation_matrix, 0.95)
 
     OutputToJson.txt_to_json(txtFileName, jsonFileName)
 
@@ -70,7 +70,7 @@ def get_day_data(coin):
 def append_output(output, coin, correlation, hourly, daily):
     returnStr = output
 
-    returnStr += f"{coin}:\t%{hourly}\t%{daily}\tCorrelation: {round(float(correlation), 3)}\n"
+    returnStr += f"{coin}:\t1H Change: %{hourly}\tDaily Change: %{daily}\tCorrelation: {round(float(correlation), 3)}\n"
     return returnStr
 
 
@@ -99,7 +99,7 @@ def get_signal(message):
     if message_split[0] == "/Signal":
         coin = message_split[1]
         if coin not in get_correlations_dictionary():
-            print("Coin listede yok")
+            bot.send_message(PUBLIC_CHANNEL_CHAT_ID, "Korelasyon bulunamadı.")
         else:
             try:
                 handle_signal(message_split[1])
@@ -108,5 +108,5 @@ def get_signal(message):
 
 
 if __name__ == "__main__":
-    # save_correlations()
-    bot.polling(non_stop=True, interval=5)
+    #save_correlations()
+    bot.polling(non_stop=True, interval=15)
