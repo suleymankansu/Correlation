@@ -60,12 +60,12 @@ def save_to_excel(file, ticker, data, column_name):
 def save_data():
     coin_list = get_coin_list()
 
-    close_excel = "close.xlsx"
-    high_excel = "high.xlsx"
-    low_excel = "low.xlsx"
+    close_excel = "close4h.xlsx"
+    high_excel = "high4h.xlsx"
+    low_excel = "low4h.xlsx"
 
     for coin in tqdm.tqdm(range(len(coin_list))):
-        data = get_data(coin_list[coin], "1d", "100")
+        data = get_data(coin_list[coin], "4h", "1000")
         save_to_excel(high_excel, coin_list[coin], data, column_name=2)
         save_to_excel(low_excel, coin_list[coin], data, column_name=3)
         save_to_excel(close_excel, coin_list[coin], data, column_name=4)
