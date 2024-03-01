@@ -146,7 +146,7 @@ def search_for_signal():
 
 
 def main():
-    schedule.every().hour.at(":35").do(search_for_signal)
+    schedule.every().hour.at(":01").do(search_for_signal)
     while True:
         schedule.run_pending()
         time.sleep(1)
