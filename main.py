@@ -111,9 +111,9 @@ Günlük: %{get_emoji(coin_daily_data)}\t%{coin_daily_data}
     """
 
     for i in correlations:
-        corr_hour_data = get_hour_data(i)[0]
+        corr_hour_data = get_hour_data(i)
         corr_daily_data = get_day_data(i)
-        output = append_output(output, i, correlations[i], corr_hour_data, corr_daily_data, coin_hour_data[1])
+        output = append_output(output, i, correlations[i], corr_hour_data[0], corr_daily_data, corr_hour_data[1])
 
     send_telegram_message(output)
 
