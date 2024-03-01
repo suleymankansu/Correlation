@@ -1,4 +1,3 @@
-from telethon.sync import TelegramClient
 import MarketData
 import json
 import schedule
